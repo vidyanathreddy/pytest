@@ -13,7 +13,7 @@ node{
      sh 'docker push devopsvidya/app2'
    }
    stage('Run Container'){
-     sh 'docker run -it -p84:80 -d devopsvidya/app1'
+     sh 'docker run -it -p84:80 -d devopsvidya/app2'
      
    }
 }

@@ -9,15 +9,15 @@ pipeline {
     }
 
     stages{
-    	stage(Build Image){
+    	stage('Build Image'){
     		steps{
-    			sh 'docker stop $(docker ps -aq)'
-     			sh 'docker rm $(docker ps -aq)'
-     			sh 'docker rmi $(docker images -q)'
-     			sh 'docker build -t devopsvidya/app2 .'
+    			sh "docker stop $(docker ps -aq)"
+     			sh "docker rm $(docker ps -aq)"
+     			sh "docker rmi $(docker images -q)"
+     			sh "docker build -t devopsvidya/app2 ."
 			}
 		}
-    	stage(Push Image){
+    	stage('Push Image'){
     		steps{
     			withCredentials([string(credentialsId: 'dock-pwd', variable: 'DHP')]){
     				sh "docker login -u devopsvidya -p ${DHP}"
@@ -26,7 +26,7 @@ pipeline {
 				sh "docker push devopsvidya/app2"
 			}
 		}
-    	stage(Run Cont){
+    	stage('Run Cont'){
     		steps{
     			sh "docker run -it -p84:80 -d devopsvidya/app2"
     		}

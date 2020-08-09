@@ -9,4 +9,4 @@ spec:
     - name: nodeapp
       image: devopsvidya/app2
       ports:
-        - containerPort: 80
+        - containerPort: 8080

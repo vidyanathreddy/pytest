@@ -9,8 +9,8 @@ pipeline {
 
         stage('Build Image'){
             steps{
-                sh 'docker stop $(docker ps -aq)'
-                sh 'docker rm $(docker ps -aq)'
+                
+                
                 sh 'docker rmi $(docker images -q)'
                 sh 'docker build -t devopsvidya/app2 .'
             }

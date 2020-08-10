@@ -21,7 +21,7 @@ pipeline {
                 sh 'docker login -u devopsvidya -p ${DHP}'
                 }
                 sh 'docker push devopsvidya/app2'
-                                                                                                                     1,1           Top
+                                                                                                                    
             }
         }
         stage('Deploy to K8s'){

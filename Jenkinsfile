@@ -21,7 +21,7 @@ pipeline {
                 sh 'docker login -u devopsvidya -p ${DHP}'
                 }
                 sh 'docker push devopsvidya/app2'
-                                                                                                                    
+                                                                                                                     
             }
         }
         stage('Deploy to K8s'){
@@ -41,6 +41,9 @@ pipeline {
                                 sh "ssh ubuntu@13.127.234.22 kubectl create -f ."
                             }
                         }
+                        
                 }
         }
-}
+    }
+}                                                      
+

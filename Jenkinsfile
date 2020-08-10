@@ -9,8 +9,8 @@ pipeline {
 
         stage('Build Image'){
             steps{
-                
-                
+
+
                 sh 'docker rmi $(docker images -q)'
                 sh 'docker build -t devopsvidya/app2 .'
             }
@@ -21,29 +21,26 @@ pipeline {
                 sh 'docker login -u devopsvidya -p ${DHP}'
                 }
                 sh 'docker push devopsvidya/app2'
+                                                                                                                     1,1           Top
             }
         }
         stage('Deploy to K8s'){
                 steps{
-                        sh "scp pods.yml services.yml ubuntu@13.126.236.224:~"
+                        sh "scp deploy.yml deploy-services.yml ubuntu@13.127.234.22:~"
                         script{
                             try{
 
 
-                                sh "ssh ubuntu@13.126.236.224 kubectl apply -f ."
+                                sh "ssh ubuntu@13.127.234.22 kubectl apply -f ."
 
 
 
                             }
                             catch(error){
 
-                                sh "ssh ubuntu@13.126.236.224 kubectl create -f ."
+                                sh "ssh ubuntu@13.127.234.22 kubectl create -f ."
                             }
                         }
                 }
         }
-
-
-    }
-}
 

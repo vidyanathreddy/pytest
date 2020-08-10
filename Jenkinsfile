@@ -11,7 +11,7 @@ pipeline {
             steps{
 
 
-                sh 'docker rmi $(docker images -q)'
+                
                 sh 'docker build -t devopsvidya/app2 .'
             }
         }
